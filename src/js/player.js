@@ -17,7 +17,7 @@ export default class Player
         this.pwidth = 20;
         this.pheight = 200;
         this.pypos = height/2 - 100;
-        this.ySpeed = 5;
+        this.ySpeed = 7;
         this.pleft = this.pxpos;
         this.pright = this.pxpos + this.pwidth;
     }
