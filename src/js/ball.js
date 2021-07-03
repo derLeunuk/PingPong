@@ -69,24 +69,28 @@ export default class Ball
         {
             this.xSpeed = -this.xSpeed;
             this.ySpeed = -4;
-        }
-
-        /*if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 50 && this.ypos <= plypos + 100)
-        {
-            this.xSpeed = -this.xSpeed;
-            this.ySpeed = -2;
-        }
-
-        if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos +100 && this.ypos <= plypos + 150)
-        {
-            this.xSpeed = -this.xSpeed;
-            this.ySpeed = 2;
-        }
-
-        if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos +150 && this.ypos <= plypos + plheight)
-        {
-            this.xSpeed = -this.xSpeed;
-            this.ySpeed = 4;
-        }*/
+        }else
+            {
+                if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 50 && this.ypos <= plypos + 100)
+                    {
+                        this.xSpeed = -this.xSpeed;
+                        this.ySpeed = -2;
+                    }else
+                        {
+                            if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos +100 && this.ypos <= plypos + 150)
+                                {
+                                    this.xSpeed = -this.xSpeed;
+                                    this.ySpeed = 2;
+                                }else
+                                    {
+                                        if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos +150 && this.ypos <= plypos + plheight)
+                                        {
+                                            this.xSpeed = -this.xSpeed;
+                                            this.ySpeed = 4;
+                                        }
+                                    }
+                    
+                        }
+            }
     }
 }
