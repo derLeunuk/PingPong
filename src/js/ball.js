@@ -1,5 +1,5 @@
 import { width, height, ctx, left, right, keys, up, down } from "./game"
-/*import { pwidth, pheight, pxpos, pypos, pLeft, pRight} from "./player";*/
+
 
 export default class Ball
 {
@@ -65,6 +65,7 @@ export default class Ball
         let plypos = pl.pypos;
         let plxpos = pl.pxpos;
 
+        //player collision
         if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos >= plypos && this.ypos <= plypos + 50)
         {
             this.xSpeed = -this.xSpeed;
