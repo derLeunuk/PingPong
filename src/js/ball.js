@@ -11,6 +11,8 @@ export default class Ball
         this.xSpeed = 0;
         this.ySpeed = 0;
         this.state = 0;
+        this.p1 = "0";
+        this.p2 = "0";
     }
 
     render()
@@ -18,25 +20,62 @@ export default class Ball
         ctx.fillStyle = "white";
         ctx.fillRect(this.xpos, this.ypos, this.bheight, this.bheight);
 
-        if(this.state == 0)
+        ctx.fillStyle = "white";
+        ctx.textAlign = "right";
+        ctx.font = "150px Archivo Black";
+        ctx.fillText(this.p1, width/2 - 55, 150);
+        ctx.fillText(this.p2, width/2 + 150, 150);
+
+        if(this.state == 0 || this.state == 2)
         {
             ctx.fillStyle = "black";
             ctx.textAlign = "left";
-            ctx.font = "30px Arial";
-            ctx.fillText("Press 'enter' to start", 50, 50);
+            ctx.font = "40px Staatliches";
+            ctx.fillText("Press 'enter' to start", 40, 55);
+        }
+
+        if(this.state == 2)
+        {
+            ctx.fillStyle = "white";
+            ctx.fillRect(width/2 - 300, height/2 - 100, 600, 130);
+
+            if(this.p1 == 1)
+            {
+            ctx.fillStyle = "black";
+            ctx.textAlign = "left";
+            ctx.font = "160px Staatliches";
+            ctx.fillText("Player 1 wins!", width/2 - 450, height/2);
+            }
+
+            if(this.p2 == 1)
+            {
+            ctx.fillStyle = "black";
+            ctx.textAlign = "right";
+            ctx.font = "100px Staatliches";
+            ctx.fillText("Player 2 wins!", width/2 +250, height/2);
+            }
         }
     }
 
-    update(p)
+    update()
     {
         this.xpos += this.xSpeed;
         this.ypos += this.ySpeed;
 
-        if(this.state == 0 && keys["enter"])
+        if(this.state == 0  && keys["enter"])
         {
                 this.ySpeed = 0;
                 this.xSpeed = -4;
                 this.state = 1;
+        }
+
+        if(this.state == 2  && keys["enter"])
+        {
+                this.ySpeed = 0;
+                this.xSpeed = -4;
+                this.state = 1;
+                this.p1 = 0;
+                this.p2 = 0;
         }
         
         if(this.ypos < up)
@@ -49,11 +88,32 @@ export default class Ball
             this.ySpeed =  -this.ySpeed;
         }
 
-        if(this.xpos < left - this.bheight || this.xpos > right)
+        if(this.xpos < left - this.bheight)
         {
             this.xpos = width * 0.66;
             this.ypos = height/2;
             this.xSpeed = -4;
+            this.ySpeed = 0;
+            this.p2++;
+        }
+
+        if(this.xpos > right)
+        {
+            this.xpos = width * 0.66;
+            this.ypos = height/2;
+            this.xSpeed = -4;
+            this.ySpeed = 0;
+            this.p1++;
+        }
+
+        if(this.p1 == 10 || this.p2 == 10)
+        {
+            this.state = 2;
+        }
+
+        if(this.state == 2)
+        {
+            this.xSpeed = 0;
             this.ySpeed = 0;
         }
     }
@@ -80,7 +140,7 @@ export default class Ball
                         {
                             if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos +100 && this.ypos <= plypos + 150)
                                 {
-                                    this.xSpeed = -this.xSpeed;
+                                    this.xSpeed = -this.xSpeed+;
                                     this.ySpeed = 2;
                                 }else
                                     {
