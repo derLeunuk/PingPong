@@ -7,7 +7,7 @@ export default class Ball
     {
         this.xpos = width * 0.66;
         this.ypos = height/2;
-        this.bheight = 14;
+        this.bheight = 20;
         this.xSpeed = 0;
         this.ySpeed = 0;
         this.state = 0;
@@ -32,6 +32,16 @@ export default class Ball
             ctx.textAlign = "left";
             ctx.font = "40px Staatliches";
             ctx.fillText("Press 'enter' to start", 40, 55);
+
+            ctx.fillStyle = "black";
+            ctx.textAlign = "left";
+            ctx.font = "40px Staatliches";
+            ctx.fillText("1 Player: press 1", 40, 105);
+
+            ctx.fillStyle = "black";
+            ctx.textAlign = "left";
+            ctx.font = "40px Staatliches";
+            ctx.fillText("2 Player: press 2", 40, 155);
         }
 
         if(this.state == 2)
@@ -65,14 +75,14 @@ export default class Ball
         if(this.state == 0  && keys["enter"])
         {
                 this.ySpeed = 1;
-                this.xSpeed = -5;
+                this.xSpeed = -7;
                 this.state = 1;
         }
 
         if(this.state == 2  && keys["enter"])
         {
                 this.ySpeed = 0;
-                this.xSpeed = -4;
+                this.xSpeed = -7;
                 this.state = 1;
                 this.p1 = 0;
                 this.p2 = 0;
@@ -92,8 +102,8 @@ export default class Ball
         {
             this.xpos = width * 0.66;
             this.ypos = height/2;
-            this.xSpeed = -4;
-            this.ySpeed = 2;
+            this.xSpeed = -7;
+            this.ySpeed = 1;
             this.p2++;
         }
 
@@ -101,8 +111,8 @@ export default class Ball
         {
             this.xpos = width * 0.33;
             this.ypos = height/2;
-            this.xSpeed = 4;
-            this.ySpeed = 2;
+            this.xSpeed = 7;
+            this.ySpeed = 1;
             this.p1++;
             
         }
@@ -126,73 +136,173 @@ export default class Ball
         let plypos = pl.pypos;
         let plxpos = pl.pxpos;
 
-        //player collision
-        if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos >= plypos && this.ypos <= plypos + 50)
+        //player collision, player height parted in 10 sections with different collision logic
+        //1
+        if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos >= plypos && this.ypos <= plypos + 20)
         {
             if(this.xSpeed < 0)
             {
                 this.xSpeed = this.xSpeed - 1;
                 this.xSpeed = -this.xSpeed;
-                this.ySpeed = -4 - 0.5;
+                this.ySpeed = -7 - 0.5;
             }
             else
             {
                 this.xSpeed = this.xSpeed + 1;
                 this.xSpeed = -this.xSpeed;
-                this.ySpeed = -4 - 0.5;
+                this.ySpeed = -7 - 0.5;
             }
-        }else
+        }else{ //2
+        if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 20 && this.ypos <= plypos + 50)
             {
-                if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 50 && this.ypos <= plypos + 100)
+                if(this.xSpeed < 0)
                     {
-                        if(this.xSpeed < 0)
-                            {
-                                this.xSpeed = this.xSpeed - 1;
-                                this.xSpeed = -this.xSpeed;
-                                this.ySpeed = -2 - 0.5;
-                            }
-                            else
-                            {
-                                this.xSpeed = this.xSpeed + 1;
-                                this.xSpeed = -this.xSpeed;
-                                this.ySpeed = -2 - 0.5;
-                            }
-                    }else
+                        this.xSpeed = this.xSpeed - 1;
+                        this.xSpeed = -this.xSpeed;
+                        this.ySpeed = -6 - 0.5;
+                    }
+                    else
+                    {
+                        this.xSpeed = this.xSpeed + 1;
+                        this.xSpeed = -this.xSpeed;
+                        this.ySpeed = -6 - 0.5;
+                    }
+        }else{ //3
+            if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 50 && this.ypos <= plypos + 80)
+                {
+                    if(this.xSpeed < 0)
                         {
-                            if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos +100 && this.ypos <= plypos + 150)
-                                {
-                                    if(this.xSpeed < 0)
-                                        {
-                                            this.xSpeed = this.xSpeed - 1;
-                                            this.xSpeed = -this.xSpeed;
-                                            this.ySpeed = 2 + 0.5;
-                                        }
-                                    else
-                                        {
-                                            this.xSpeed = this.xSpeed + 1;
-                                            this.xSpeed = -this.xSpeed;
-                                            this.ySpeed = 2 + 0.5;
-                                        }
-                                }else
-                                    {
-                                        if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos +150 && this.ypos <= plypos + plheight)
-                                        {
-                                            if(this.xSpeed < 0)
-                                            {
-                                                this.xSpeed = this.xSpeed - 1;
-                                                this.xSpeed = -this.xSpeed;
-                                                this.ySpeed = 4 + 0.5;
-                                            }
-                                            else
-                                            {
-                                                this.xSpeed = this.xSpeed + 1;
-                                                this.xSpeed = -this.xSpeed;
-                                                this.ySpeed = 4 + 0.5;
-                                            }
-                                        }
-                                    }
-                    
+                            this.xSpeed = this.xSpeed - 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = -5 - 0.5;
                         }
-            }
+                        else
+                        {
+                        this.xSpeed = this.xSpeed + 1;
+                        this.xSpeed = -this.xSpeed;
+                        this.ySpeed = -5 - 0.5;
+                        }
+        }else{ //4
+            if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 80 && this.ypos <= plypos + 122)
+                {
+                    if(this.xSpeed < 0)
+                        {
+                            this.xSpeed = this.xSpeed - 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = -4 - 0.5;
+                        }
+                        else
+                        {
+                            this.xSpeed = this.xSpeed + 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = -4 + 0.5;
+                        }
+                     
+        }else{ //5
+            if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 122 && this.ypos <= plypos + 125)
+                {
+                    if(this.xSpeed < 0)
+                        {
+                            this.xSpeed = this.xSpeed - 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = -3 - 0.5;
+                        }
+                        else
+                        {
+                            this.xSpeed = this.xSpeed + 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = -3 - 0.5;
+                        }
+                     
+        }else{ //6
+            if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos +125 && this.ypos <= plypos + 128)
+                {
+                    if(this.xSpeed < 0)
+                        {
+                            this.xSpeed = this.xSpeed - 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = 3 + 0.5;
+                        }
+                        else
+                        {
+                            this.xSpeed = this.xSpeed + 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = 3 + 0.5;
+                        }
+                     
+        }else{ //7
+            if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 128 && this.ypos <= plypos + 170)
+                {
+                    if(this.xSpeed < 0)
+                        {
+                            this.xSpeed = this.xSpeed - 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = 4 + 0.5;
+                        }
+                        else
+                        {
+                            this.xSpeed = this.xSpeed + 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = 4 + 0.5;
+                        }
+                     
+        }else{ //8
+            if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 170 && this.ypos <= plypos + 200)
+                {
+                    if(this.xSpeed < 0)
+                        {
+                            this.xSpeed = this.xSpeed - 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = 5 + 0.5;
+                        }
+                        else
+                        {
+                            this.xSpeed = this.xSpeed + 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = 5 + 0.5;
+                        }
+                     
+        }else{ //9
+            if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 200 && this.ypos <= plypos + 230)
+                {
+                    if(this.xSpeed < 0)
+                        {
+                            this.xSpeed = this.xSpeed - 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = 6 + 0.5;
+                        }
+                        else
+                        {
+                            this.xSpeed = this.xSpeed + 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = 6 + 0.5;
+                        }
+                     
+        }else{ //10
+            if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos +150 && this.ypos <= plypos + plheight)
+                {
+                    if(this.xSpeed < 0)
+                        {
+                            this.xSpeed = this.xSpeed - 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = 7 + 0.5;
+                        }
+                        else
+                        {
+                            this.xSpeed = this.xSpeed + 1;
+                            this.xSpeed = -this.xSpeed;
+                            this.ySpeed = 7 + 0.5;
+                        }
+                     
+        }   
+        }   
+        }   
+        }   
+        }   
+        }   
+        }   
+        }
+        }
+        }
     }
 }

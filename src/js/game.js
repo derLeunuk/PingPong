@@ -30,7 +30,7 @@ export class Game
 
         this.background = new Background();
         this.player1 = new Player(left + 10, "w", "s");
-        this.player2 = new Player(right - 30, "arrowup", "arrowdown");
+        this.player2 = new Player(right - 35, "arrowup", "arrowdown");
         this.ball = new Ball();
     }
 
