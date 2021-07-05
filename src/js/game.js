@@ -2,6 +2,7 @@
 import Background  from "./background"
 import Player from "./player"
 import Ball from "./ball"
+import Bot from "./bot";
 
 export let width;
 export let height;
@@ -9,7 +10,6 @@ export let left;
 export let right;
 export let up;
 export let down;
-//export let state;
 export let canvas;
 export let ctx;
 export let keys = {};
@@ -29,8 +29,13 @@ export class Game
         this.keylistener();
 
         this.background = new Background();
+
         this.player1 = new Player(left + 10, "w", "s");
-        this.player2 = new Player(right - 35, "arrowup", "arrowdown");
+        //this.player2 = new Player(right - 35, "arrowup", "arrowdown");
+
+        //this.bot1 = new Bot(left + 10);
+        this.bot2 = new Bot(right - 35);
+
         this.ball = new Ball();
     }
 
@@ -39,10 +44,18 @@ export class Game
         this.setVariables();
 
         this.player1.update();
-        this.player2.update();
+        //this.player2.update();
+
+        //this.bot1.update(this.ball);
+        this.bot2.update(this.ball);
+
         this.ball.update();
+
         this.ball.checkCollision(this.player1);
-        this.ball.checkCollision(this.player2);
+        //this.ball.checkCollision(this.player2);
+
+        //this.ball.checkCollision(this.bot1);
+        this.ball.checkCollision(this.bot2);
     }
 
     // This is called at best 60 times every second
@@ -50,8 +63,13 @@ export class Game
     render()
     {
         this.background.render();
+
         this.player1.render();
-        this.player2.render();
+        //this.player2.render();
+
+        //this.bot1.render();
+        this.bot2.render();
+
         this.ball.render();
     }
 
