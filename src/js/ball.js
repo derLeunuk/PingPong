@@ -33,18 +33,6 @@ export default class Ball
             ctx.textAlign = "left";
             ctx.font = "40px Staatliches";
             ctx.fillText("Press 'enter' to start", 40, 55);
-
-            /*
-            ctx.fillStyle = "black";
-            ctx.textAlign = "left";
-            ctx.font = "40px Staatliches";
-            ctx.fillText("1 Player: press 1", 40, 105);
-
-            ctx.fillStyle = "black";
-            ctx.textAlign = "left";
-            ctx.font = "40px Staatliches";
-            ctx.fillText("2 Player: press 2", 40, 155);
-            */
         }
 
         if(this.state == 2)

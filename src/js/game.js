@@ -31,6 +31,7 @@ export class Game
         this.background = new Background();
 
         this.player1 = new Player(left + 10, "w", "s");
+        //this.player2 = new Player(right - 35, "arrowup", "arrowdown");
         this.player2 = new Bot(right - 35);
 
         this.ball = new Ball();
