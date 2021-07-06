@@ -141,7 +141,7 @@ export default class Ball
         let plypos = pl.pypos;
         let plxpos = pl.pxpos;
 
-        //player collision, player height parted in 10 sections with different collision logic
+        //player collision, player height parted in 6 sections with different collision logic
         //1
         if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos + this.bheight >= plypos && this.ypos <= plypos + 25)
         {
@@ -149,13 +149,13 @@ export default class Ball
             {
                 this.xSpeed = this.xSpeed - 1.5;
                 this.xSpeed = -this.xSpeed;
-                this.ySpeed = -13;
+                this.ySpeed = -12;
             }
             else
             {
                 this.xSpeed = this.xSpeed + 1.5;
                 this.xSpeed = -this.xSpeed;
-                this.ySpeed = -13;
+                this.ySpeed = -12;
             }
         }else{ //2
         if(this.xpos >= plxpos - this.bheight && this.xpos <= plxpos + plwidth && this.ypos > plypos + 25 && this.ypos <= plypos + 70)
@@ -179,13 +179,13 @@ export default class Ball
                         {
                             this.xSpeed = this.xSpeed - 1.5;
                             this.xSpeed = -this.xSpeed;
-                            this.ySpeed = -3;
+                            this.ySpeed = -4;
                         }
                         else
                         {
                             this.xSpeed = this.xSpeed + 1.5;
                             this.xSpeed = -this.xSpeed;
-                            this.ySpeed = -3;
+                            this.ySpeed = -4;
                         }
                      
         }else{ //4
@@ -195,13 +195,13 @@ export default class Ball
                         {
                             this.xSpeed = this.xSpeed - 1.5;
                             this.xSpeed = -this.xSpeed;
-                            this.ySpeed = 3;
+                            this.ySpeed = 4;
                         }
                         else
                         {
                             this.xSpeed = this.xSpeed + 1.5;
                             this.xSpeed = -this.xSpeed;
-                            this.ySpeed = 3;
+                            this.ySpeed = 4;
                         }
                      
         }else{ //5
@@ -211,13 +211,13 @@ export default class Ball
                         {
                             this.xSpeed = this.xSpeed - 1.5;
                             this.xSpeed = -this.xSpeed;
-                            this.ySpeed = 10;
+                            this.ySpeed = 8;
                         }
                         else
                         {
                             this.xSpeed = this.xSpeed + 1.5;
                             this.xSpeed = -this.xSpeed;
-                            this.ySpeed = 10;
+                            this.ySpeed = 8;
                         }
                      
         }else{ //6
@@ -227,13 +227,13 @@ export default class Ball
                         {
                             this.xSpeed = this.xSpeed - 1.5;
                             this.xSpeed = -this.xSpeed;
-                            this.ySpeed = 13;
+                            this.ySpeed = 12;
                         }
                         else
                         {
                             this.xSpeed = this.xSpeed + 1.5;
                             this.xSpeed = -this.xSpeed;
-                            this.ySpeed = 13;
+                            this.ySpeed = 12;
                         }
                      
                 }   

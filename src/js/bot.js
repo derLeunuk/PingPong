@@ -34,9 +34,14 @@ export default class Bot
             this.ySpeed = -this.ySpeed;
         }
 
-        if(this.ySpeed > 8)
+        if(this.ySpeed > 9)
         {
-            this.ySpeed = 8;
+            this.ySpeed = 9;
+        }
+
+        if(this.ySpeed < 3)
+        {
+            this.ySpeed = 3;
         }
 
         if(blypos < this.pypos + this.pheight/2 - 40)

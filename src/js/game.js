@@ -31,10 +31,7 @@ export class Game
         this.background = new Background();
 
         this.player1 = new Player(left + 10, "w", "s");
-        //this.player2 = new Player(right - 35, "arrowup", "arrowdown");
-
-        //this.bot1 = new Bot(left + 10);
-        this.bot2 = new Bot(right - 35);
+        this.player2 = new Bot(right - 35);
 
         this.ball = new Ball();
     }
@@ -44,18 +41,12 @@ export class Game
         this.setVariables();
 
         this.player1.update();
-        //this.player2.update();
-
-        //this.bot1.update(this.ball);
-        this.bot2.update(this.ball);
+        this.player2.update(this.ball);
 
         this.ball.update();
 
         this.ball.checkCollision(this.player1);
-        //this.ball.checkCollision(this.player2);
-
-        //this.ball.checkCollision(this.bot1);
-        this.ball.checkCollision(this.bot2);
+        this.ball.checkCollision(this.player2);
     }
 
     // This is called at best 60 times every second
@@ -65,10 +56,7 @@ export class Game
         this.background.render();
 
         this.player1.render();
-        //this.player2.render();
-
-        //this.bot1.render();
-        this.bot2.render();
+        this.player2.render();
 
         this.ball.render();
     }
