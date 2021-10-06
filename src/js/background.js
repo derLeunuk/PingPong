@@ -7,7 +7,7 @@ export default class Background
     {
         //background
         ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, width, height)
+        ctx.fillRect(0, 0, width, height);
 
         //borders
         ctx.fillStyle = "white";
